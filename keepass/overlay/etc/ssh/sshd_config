@@ -1,0 +1,22 @@
+AllowUsers keepass
+
+PermitRootLogin no
+PermitEmptyPasswords no
+PasswordAuthentication no
+PubkeyAuthentication yes
+PubkeyAcceptedKeyTypes +ssh-rsa
+
+PermitTTY no
+PrintMotd no
+
+AuthorizedKeysFile /ssh/authorized_keys
+
+HostKey /ssh/ssh_host_rsa_key
+HostKey /ssh/ssh_host_ecdsa_key
+HostKey /ssh/ssh_host_ed25519_key
+
+Subsystem sftp internal-sftp
+
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no
