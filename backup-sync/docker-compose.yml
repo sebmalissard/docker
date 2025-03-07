@@ -1,0 +1,16 @@
+services:
+  backup-sync:
+    image: ghcr.io/sebmalissard/backup-sync:latest
+    container_name: backup-sync
+    environment:
+      - URL=${URL}
+      - USER=${USER}
+      - PASS=${PASS}
+      - CRYPT_PWD1=${CRYPT_PWD1}
+      - CRYPT_PWD2=${CRYPT_PWD2}
+    volumes:
+      - ${MNT_PATH:-/mnt}:/mnt
+    privileged: true
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    restart: no
