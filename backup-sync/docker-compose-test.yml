@@ -1,15 +1,15 @@
 services:
   backup-sync:
-    image: ghcr.io/sebmalissard/backup-sync:latest
+    image: backup-sync:latest
     container_name: backup-sync
     environment:
-      - URL=${URL}
+      - URL=${URL_TEST}
       - USER=${USER}
       - PASS=${PASS}
       - CRYPT_PWD1=${CRYPT_PWD1}
       - CRYPT_PWD2=${CRYPT_PWD2}
     volumes:
-      - /mnt:/mnt
+      - ${MNT_PATH}:/mnt
     privileged: true
     devices:
       - "/dev/fuse:/dev/fuse"
