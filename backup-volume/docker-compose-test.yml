@@ -1,0 +1,10 @@
+services:
+  backup-volume:
+    image: backup-volume:latest
+    container_name: backup-volume
+    environment:
+      - MNT_BACKUP_DIR=${MNT_BACKUP_DIR}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt:/mnt
+    restart: no
