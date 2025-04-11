@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export NAME=${1:-wireguard-server}
-export CONFIG_PATH=${2:-$PATH/config}
+export CONFIG_PATH=${2:-$PWD/config}
 
 if [ -z "${NAME}" ] || [ -z "${CONFIG_PATH}" ]; then
     echo "Invalid arguments";
