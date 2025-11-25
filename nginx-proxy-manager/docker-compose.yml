@@ -1,0 +1,24 @@
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    environment:
+      TZ: "Europe/Paris"
+    ports:
+      - '8080:80'
+      - '8443:443'
+      - '127.0.0.1:55001:81' # Admin Web UI only accessible from localhost
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy_network
+
+volumes:
+  data:
+  letsencrypt:
+
+networks:
+  proxy_network:
+    external: true
