@@ -1,0 +1,20 @@
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:latest
+    container_name: mealie
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - BASE_URL=${BASE_URL}
+      - ALLOW_SIGNUP=${ALLOW_SIGNUP}
+      - SMTP_FROM_EMAIL=${SMTP_FROM_EMAIL}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+    volumes:
+      - Mealie-config:/app/data/
+
+volumes:
+  Mealie-config:
+    external: true
